@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Card Validation</title>
+		<link rel="stylesheet" href="styles.css" />
+	</head>
+	<body>
+		<h1>To-do List</h1>
+		<p>Input Task Title and Description below</p>
+		<main class="main-section">
+			<div class="form">
+				<form id="card-form">
+					<label for="card-number">Task Title</label>
+					<div class="input-field">
+						<input
+							type="text"
+							id="card-number"
+							name="card-number"
+							placeholder="E.g Sorting  Documents"
+							required
+						/>
+					</div>
+
+					<label for="cvv-number">Description</label>
+
+					<div class="input-field">
+						<input
+							type="text"
+							id="cvv-number"
+							name="cvv-number"
+							placeholder="Task Description"
+						/>
+					</div>
+
+					<br />
+					<button id="add" type="submit">Add</button>
+				</form>
+			</div>
+
+			<div class="todo-content" id="todoListContainer">
+				<div class="todo-rows">
+					<div class="todo-heading">
+						<h2>Shower with Babe</h2>
+						<p>
+							When I get up this morning I have to prioritize showering with
+							babe if not she'll be cranky all day
+						</p>
+					</div>
+					<div class="todo-button">
+						<button class="delete">Delete</button>
+						<button class="update">Update</button>
+					</div>
+				</div>
+			</div>
+		</main>
+
+		<div id="result"></div>
+
+		<script type="module">
+			const formulate = document.getElementById('card-form');
+			const addButton = document.getElementById('add');
+			const todo = [
+				{
+					title: 'Go to Bank',
+					description:
+						'Gotta update my banking records as well as improve the daily transaction limit Gotta update my banking records as well as improve the daily transaction limit update my banking records as well as improve the daily transaction limit update my banking records as well as improve the daily transaction limit update my banking records as well as improve the daily transaction limitupdate my banking records as well as improve the daily transaction limit',
+				},
+				{
+					title: 'Go to Bank',
+					description:
+						'Gotta update my banking records as well as improve the daily transaction limit Gotta update my banking records as well as improve the daily transaction limit update my banking records as well as improve the daily transaction limit update my banking records as well as improve the daily transaction limit update my banking records as well as improve the daily transaction limitupdate my banking records as well as improve the daily transaction limit',
+				},
+				{
+					title: 'Go to Bank',
+					description:
+						'Gotta update my banking records as well as improve the daily transaction limit Gotta update my banking records as well as improve the daily transaction limit update my banking records as well as improve the daily transaction limit update my banking records as well as improve the daily transaction limit update my banking records as well as improve the daily transaction limitupdate my banking records as well as improve the daily transaction limit',
+				},
+				{
+					title: 'Go to Bank',
+					description:
+						'Gotta update my banking records as well as improve the daily transaction limit Gotta update my banking records as well as improve the daily transaction limit update my banking records as well as improve the daily transaction limit update my banking records as well as improve the daily transaction limit update my banking records as well as improve the daily transaction limitupdate my banking records as well as improve the daily transaction limit',
+				},
+				{
+					title: 'Go to Bank',
+					description:
+						'Gotta update my banking records as well as improve the daily transaction limit Gotta update my banking records as well as improve the daily transaction limit update my banking records as well as improve the daily transaction limit update my banking records as well as improve the daily transaction limit update my banking records as well as improve the daily transaction limitupdate my banking records as well as improve the daily transaction limit',
+				},
+				{
+					title: 'Go to Bank',
+					description:
+						'Gotta update my banking records as well as improve the daily transaction limit Gotta update my banking records as well as improve the daily transaction limit update my banking records as well as improve the daily transaction limit update my banking records as well as improve the daily transaction limit update my banking records as well as improve the daily transaction limitupdate my banking records as well as improve the daily transaction limit',
+				},
+				{
+					title: 'Go to Bank',
+					description:
+						'Gotta update my banking records as well as improve the daily transaction limit Gotta update my banking records as well as improve the daily transaction limit update my banking records as well as improve the daily transaction limit update my banking records as well as improve the daily transaction limit update my banking records as well as improve the daily transaction limitupdate my banking records as well as improve the daily transaction limit',
+				},
+				{
+					title: 'Go to Bank',
+					description:
+						'Gotta update my banking records as well as improve the daily transaction limit Gotta update my banking records as well as improve the daily transaction limit update my banking records as well as improve the daily transaction limit update my banking records as well as improve the daily transaction limit update my banking records as well as improve the daily transaction limitupdate my banking records as well as improve the daily transaction limit',
+				},
+				{
+					title: 'Go to Bank',
+					description:
+						'Gotta update my banking records as well as improve the daily transaction limit Gotta update my banking records as well as improve the daily transaction limit update my banking records as well as improve the daily transaction limit update my banking records as well as improve the daily transaction limit update my banking records as well as improve the daily transaction limitupdate my banking records as well as improve the daily transaction limit',
+				},
+				{
+					title: 'Go to Bank',
+					description:
+						'Gotta update my banking records as well as improve the daily transaction limit Gotta update my banking records as well as improve the daily transaction limit update my banking records as well as improve the daily transaction limit update my banking records as well as improve the daily transaction limit update my banking records as well as improve the daily transaction limitupdate my banking records as well as improve the daily transaction limit',
+				},
+				{
+					title: 'Go to Bank',
+					description:
+						'Gotta update my banking records as well as improve the daily transaction limit Gotta update my banking records as well as improve the daily transaction limit update my banking records as well as improve the daily transaction limit update my banking records as well as improve the daily transaction limit update my banking records as well as improve the daily transaction limitupdate my banking records as well as improve the daily transaction limit',
+				},
+			];
+
+			// let todos = JSON.parse(localStorage.getItem('todos')) || [];
+			// Get the container where todo items will be added
+			const todoListContainer = document.getElementById('todoListContainer');
+
+			// Loop through the todo array and create elements dynamically
+			function renderTodos() {
+				// Clear existing content
+				todoListContainer.innerHTML = '';
+
+				// Loop through the todo array and create elements dynamically
+				todo.forEach((task) => {
+					const todoRow = document.createElement('div');
+					todoRow.classList.add('todo-rows');
+
+					const todoHeading = document.createElement('div');
+					todoHeading.classList.add('todo-heading');
+
+					const h2 = document.createElement('h2');
+					h2.textContent = task.title;
+
+					const p = document.createElement('p');
+					p.textContent = task.description;
+
+					todoHeading.appendChild(h2);
+					todoHeading.appendChild(p);
+
+					const todoButtons = document.createElement('div');
+					todoButtons.classList.add('todo-button');
+
+					const deleteButton = document.createElement('button');
+					deleteButton.classList.add('delete');
+					deleteButton.textContent = 'Delete';
+
+					const updateButton = document.createElement('button');
+					updateButton.classList.add('update');
+					updateButton.textContent = 'Update';
+
+					todoButtons.appendChild(deleteButton);
+					todoButtons.appendChild(updateButton);
+
+					todoRow.appendChild(todoHeading);
+					todoRow.appendChild(todoButtons);
+
+					todoListContainer.appendChild(todoRow);
+				});
+			}
+
+			// Initial render
+			renderTodos();
+			console.log(todo.slice(0, 2).concat(todo.slice(4, 6)));
+
+			function addTodo() {
+				const todoTitle = document.getElementById('card-number').value;
+				const todoDescription = document.getElementById('cvv-number').value;
+
+				const newTodo = {
+					title: todoTitle,
+					description: todoDescription,
+				};
+
+				todo.push(newTodo);
+				renderTodos();
+			}
+
+			formulate.addEventListener('submit', (e) => {
+				e.preventDefault();
+				addTodo();
+				console.log(todo);
+			});
+		</script>
+	</body>
+</html>
