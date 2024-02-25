@@ -125,9 +125,8 @@ body {
 .todo-heading p {
 	color: #122156bb;
 	font-size: 0.77rem;
-	/* display: flex;
-	flex-wrap: wrap;
-	max-width: 38rem; */
+	max-width: 38rem;
+	word-wrap: break-word;
 	text-align: left;
 }
 .todo-heading {

@@ -129,7 +129,7 @@
 				todoListContainer.innerHTML = '';
 
 				// Loop through the todo array and create elements dynamically
-				todo.forEach((task) => {
+				todo.forEach((task, index) => {
 					const todoRow = document.createElement('div');
 					todoRow.classList.add('todo-rows');
 
@@ -151,10 +151,12 @@
 					const deleteButton = document.createElement('button');
 					deleteButton.classList.add('delete');
 					deleteButton.textContent = 'Delete';
+					deleteButton.addEventListener('click', () => deleteTodo(index));
 
 					const updateButton = document.createElement('button');
 					updateButton.classList.add('update');
 					updateButton.textContent = 'Update';
+					updateButton.addEventListener('click', () => updateTodo(index));
 
 					todoButtons.appendChild(deleteButton);
 					todoButtons.appendChild(updateButton);
@@ -168,7 +170,6 @@
 
 			// Initial render
 			renderTodos();
-			console.log(todo.slice(0, 2).concat(todo.slice(4, 6)));
 
 			function addTodo() {
 				const todoTitle = document.getElementById('card-number').value;
@@ -183,6 +184,17 @@
 				renderTodos();
 			}
 
+			function deleteTodo(index) {
+				todo.splice(index, 1);
+				renderTodos();
+			}
+
+			function updateTodo(index) {
+				todo[index].title = prompt('Enter updated title');
+				todo[index].description = prompt('Enter updated description');
+				console.log(`Updating todo at index ${index}`);
+				renderTodos();
+			}
 			formulate.addEventListener('submit', (e) => {
 				e.preventDefault();
 				addTodo();
