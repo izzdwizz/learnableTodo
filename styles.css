@@ -241,8 +241,12 @@ label {
 	display: block;
 	margin-bottom: 5px;
 	color: #122156;
-
+	font-weight: 600;
 	font-size: 0.75rem;
+}
+
+.description {
+	margin-top: 2rem;
 }
 
 .input-field {
