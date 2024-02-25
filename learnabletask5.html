@@ -63,72 +63,17 @@
 			const addButton = document.getElementById('add');
 			const todo = [
 				{
-					title: 'Go to Bank',
+					title: 'Demo Example',
 					description:
-						'Gotta update my banking records as well as improve the daily transaction limit Gotta update my banking records as well as improve the daily transaction limit update my banking records as well as improve the daily transaction limit update my banking records as well as improve the daily transaction limit update my banking records as well as improve the daily transaction limitupdate my banking records as well as improve the daily transaction limit',
-				},
-				{
-					title: 'Go to Bank',
-					description:
-						'Gotta update my banking records as well as improve the daily transaction limit Gotta update my banking records as well as improve the daily transaction limit update my banking records as well as improve the daily transaction limit update my banking records as well as improve the daily transaction limit update my banking records as well as improve the daily transaction limitupdate my banking records as well as improve the daily transaction limit',
-				},
-				{
-					title: 'Go to Bank',
-					description:
-						'Gotta update my banking records as well as improve the daily transaction limit Gotta update my banking records as well as improve the daily transaction limit update my banking records as well as improve the daily transaction limit update my banking records as well as improve the daily transaction limit update my banking records as well as improve the daily transaction limitupdate my banking records as well as improve the daily transaction limit',
-				},
-				{
-					title: 'Go to Bank',
-					description:
-						'Gotta update my banking records as well as improve the daily transaction limit Gotta update my banking records as well as improve the daily transaction limit update my banking records as well as improve the daily transaction limit update my banking records as well as improve the daily transaction limit update my banking records as well as improve the daily transaction limitupdate my banking records as well as improve the daily transaction limit',
-				},
-				{
-					title: 'Go to Bank',
-					description:
-						'Gotta update my banking records as well as improve the daily transaction limit Gotta update my banking records as well as improve the daily transaction limit update my banking records as well as improve the daily transaction limit update my banking records as well as improve the daily transaction limit update my banking records as well as improve the daily transaction limitupdate my banking records as well as improve the daily transaction limit',
-				},
-				{
-					title: 'Go to Bank',
-					description:
-						'Gotta update my banking records as well as improve the daily transaction limit Gotta update my banking records as well as improve the daily transaction limit update my banking records as well as improve the daily transaction limit update my banking records as well as improve the daily transaction limit update my banking records as well as improve the daily transaction limitupdate my banking records as well as improve the daily transaction limit',
-				},
-				{
-					title: 'Go to Bank',
-					description:
-						'Gotta update my banking records as well as improve the daily transaction limit Gotta update my banking records as well as improve the daily transaction limit update my banking records as well as improve the daily transaction limit update my banking records as well as improve the daily transaction limit update my banking records as well as improve the daily transaction limitupdate my banking records as well as improve the daily transaction limit',
-				},
-				{
-					title: 'Go to Bank',
-					description:
-						'Gotta update my banking records as well as improve the daily transaction limit Gotta update my banking records as well as improve the daily transaction limit update my banking records as well as improve the daily transaction limit update my banking records as well as improve the daily transaction limit update my banking records as well as improve the daily transaction limitupdate my banking records as well as improve the daily transaction limit',
-				},
-				{
-					title: 'Go to Bank',
-					description:
-						'Gotta update my banking records as well as improve the daily transaction limit Gotta update my banking records as well as improve the daily transaction limit update my banking records as well as improve the daily transaction limit update my banking records as well as improve the daily transaction limit update my banking records as well as improve the daily transaction limitupdate my banking records as well as improve the daily transaction limit',
-				},
-				{
-					title: 'Go to Bank',
-					description:
-						'Gotta update my banking records as well as improve the daily transaction limit Gotta update my banking records as well as improve the daily transaction limit update my banking records as well as improve the daily transaction limit update my banking records as well as improve the daily transaction limit update my banking records as well as improve the daily transaction limitupdate my banking records as well as improve the daily transaction limit',
-				},
-				{
-					title: 'Go to Bank',
-					description:
-						'Gotta update my banking records as well as improve the daily transaction limit Gotta update my banking records as well as improve the daily transaction limit update my banking records as well as improve the daily transaction limit update my banking records as well as improve the daily transaction limit update my banking records as well as improve the daily transaction limitupdate my banking records as well as improve the daily transaction limit',
+						'Feel free to delete this demo example for testing the todo list',
 				},
 			];
 
 			// let todos = JSON.parse(localStorage.getItem('todos')) || [];
-			// Get the container where todo items will be added
 			const todoListContainer = document.getElementById('todoListContainer');
 
-			// Loop through the todo array and create elements dynamically
 			function renderTodos() {
-				// Clear existing content
 				todoListContainer.innerHTML = '';
-
-				// Loop through the todo array and create elements dynamically
 				todo.forEach((task, index) => {
 					const todoRow = document.createElement('div');
 					todoRow.classList.add('todo-rows');
@@ -195,6 +140,7 @@
 				console.log(`Updating todo at index ${index}`);
 				renderTodos();
 			}
+
 			formulate.addEventListener('submit', (e) => {
 				e.preventDefault();
 				addTodo();
